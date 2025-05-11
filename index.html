@@ -1,1 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Deoxyz - Leaker</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      color: #00ff00;
+      font-family: 'Courier New', Courier, monospace;
+      text-shadow: 0 0 4px #00ff00;
+    }
 
+    #universe {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(ellipse at bottom, #000010 0%, #000 100%);
+    }
+
+    .top-header {
+      background-color: #000;
+      padding: 30px 0;
+      text-align: center;
+      border-bottom: 2px solid #00ff00;
+      box-shadow: 0 0 10px #00ff00aa;
+    }
+
+    .top-header h1 {
+      font-size: 40px;
+      color: #00ff00;
+      letter-spacing: 2px;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 40px;
+    }
+
+    .banner {
+      background-color: #000;
+      border: 2px solid #00ff00;
+      padding: 15px;
+      margin: 20px;
+      width: 300px;
+      text-align: center;
+      transition: 0.3s;
+      box-shadow: 0 0 10px #00ff00aa;
+    }
+
+    .banner:hover {
+      background-color: #002200;
+      color: #ccffcc;
+      border-color: #ccffcc;
+    }
+
+    .banner img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+      filter: brightness(1.1) contrast(1.2);
+    }
+
+    .banner a {
+      color: #00ff00;
+      text-decoration: none;
+      font-size: 14px;
+      display: block;
+      margin-top: 10px;
+      border-top: 1px dashed #00ff00;
+      padding-top: 10px;
+    }
+
+    .banner a:hover {
+      background-color: #00ff00;
+      color: #000;
+      padding: 5px;
+      text-shadow: none;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px 0;
+      color: #00ff00;
+      font-size: 12px;
+      margin-top: 70px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="top-header">
+    <h1>UNKNOW - HAT - IDENTIFIED</h1>
+  </div>
+
+  <!-- BODY -->
+  <div class="container">
+    <!-- Leak 1 -->
+    <div class="banner">
+      <a href="leak1.html">
+        <img src="https://dainam.edu.vn/img/logo/logo-ios-3.svg" alt="Victim 1" />
+        <div>https://dainam.edu.vn/</div>
+        <div style="margin-top: 10px;">📁 View Leak</div>
+      </a>
+    </div>
+
+    <!-- Leak 2 -->
+    <div class="banner">
+      <a href="leak2.html">
+        <img src="https://kontum.udn.vn/assets/img/logo/logo4.png" alt="Victim 2" />
+        <div>https://kontum.udn.vn/</div>
+        <div style="margin-top: 10px;">📁 View Leak</div>
+      </a>
+    </div>
+
+    <!-- Leak 3 -->
+    <div class="banner">
+      <a href="leak3.html">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Vietnam_National_University_Hanoi_logo.svg/512px-Vietnam_National_University_Hanoi_logo.svg.png" alt="Victim 3" />
+        <div>https://vnu.edu.vn</div>
+        <div style="margin-top: 10px;">📁 View Leak</div>
+      </a>
+    </div>
+
+    <!-- Leak 4 -->
+    <div class="banner">
+      <a href="leak4.html">
+        <img src="https://upload.wikimedia.org/wikipedia/vi/2/23/Logo_Hoc_vien_Cong_nghe_Buu_chinh_Vien_thong.png" alt="Victim 4" />
+        <div>https://ptit.edu.vn</div>
+        <div style="margin-top: 10px;">📁 View Leak</div>
+      </a>
+    </div>
+
+    <!-- Leak 5 -->
+    <div class="banner">
+      <a href="leak5.html">
+        <img src="https://uet.vnu.edu.vn/wp-content/uploads/2021/06/UET-LOGO.png" alt="Victim 5" />
+        <div>https://uet.vnu.edu.vn</div>
+        <div style="margin-top: 10px;">📁 View Leak</div>
+      </a>
+    </div>
+
+    <!-- Leak 6 -->
+    <div class="banner">
+      <a href="leak6.html">
+        <img src="https://cdn.haui.edu.vn/img/haui.jpg" alt="Victim 6" />
+        <div>https://haui.edu.vn</div>
+        <div style="margin-top: 10px;">📁 View Leak</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    © 2025 UAI - All leaks are exposed by Deoxyz Leaker
+  </div>
+
+  <canvas id="universe"></canvas>
+</body>
+</html>
+
+<script>
+const canvas = document.getElementById('universe');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+// ⭐ Stars
+let stars = Array.from({length: 300}, () => ({
+  x: Math.random() * canvas.width,
+  y: Math.random() * canvas.height,
+  radius: Math.random() * 1.5 + 0.5,
+  alpha: Math.random(),
+  flicker: Math.random() * 0.02
+}));
+
+// 🌌 Aurora layers
+let auroraLayers = Array.from({length: 3}, (_, i) => ({
+  alpha: 0.07 + i * 0.03,
+  color: i % 2 === 0 ? 'rgba(0,255,128,' : 'rgba(0,128,255,'
+}));
+
+function drawStars() {
+  for (let s of stars) {
+    s.alpha += s.flicker;
+    if (s.alpha <= 0 || s.alpha >= 1) s.flicker *= -1;
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255,255,255,${s.alpha})`;
+    ctx.fill();
+  }
+}
+
+function drawAurora() {
+  for (let a of auroraLayers) {
+    let grad = ctx.createRadialGradient(canvas.width/2, canvas.height, 0, canvas.width/2, canvas.height, 800);
+    grad.addColorStop(0, `${a.color}${a.alpha})`);
+    grad.addColorStop(1, 'transparent');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  }
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  drawAurora();
+  drawStars();
+  requestAnimationFrame(animate);
+}
+animate();
+
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+</script>
+
+
+</body>
+</html>
