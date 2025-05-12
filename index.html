@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>UHI - Leaker</title>
+  <title>Deoxyz - Leaker</title>
   <style>
     body {
       margin: 0;
@@ -90,9 +90,52 @@
       text-align: center;
       padding: 20px 0;
       color: #00ff00;
-      font-size: 15px;
+      font-size: 12px;
       margin-top: 70px;
     }
+
+.menu-toggle {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  font-size: 26px;
+  color: #00ff00;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  transition: 0.3s;
+}
+.menu-toggle:hover {
+  color: #33ff33;
+  text-shadow: 0 0 6px #00ff00;
+}
+
+.menu-box {
+  position: absolute;
+  top: 60px;
+  left: 30px;
+  background: #000;
+  border: 2px solid #00ff00;
+  padding: 10px 20px;
+  display: none;
+  box-shadow: 0 0 10px #00ff00;
+  z-index: 9;
+}
+
+.menu-box a {
+  color: #00ff00;
+  text-decoration: none;
+  display: block;
+  padding: 6px 0;
+  font-weight: bold;
+}
+.menu-box a:hover {
+  color: black;
+  background: #00ff00;
+  padding-left: 10px;
+}
+
   </style>
 </head>
 <body>
@@ -100,6 +143,13 @@
   <!-- HEADER -->
   <div class="top-header">
     <h1>UNKNOW - HAT - IDENTIFIED</h1>
+    <!-- Hamburger button -->
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<!-- Menu content -->
+<div class="menu-box" id="menuBox">
+  <a href="tools.html"> Tools</a>
+</div>  
   </div>
 
   <!-- BODY -->
@@ -161,7 +211,7 @@
 
   <!-- FOOTER -->
   <div class="footer">
-    © 2025 UHI - All leaks are exposed by Deoxyz Leaker
+    © 2025 UAI - All leaks are exposed by Deoxyz Leaker
   </div>
 
   <canvas id="universe"></canvas>
@@ -222,6 +272,11 @@ window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 });
+
+function toggleMenu() {
+  const menu = document.getElementById("menuBox");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
 </script>
 
 
