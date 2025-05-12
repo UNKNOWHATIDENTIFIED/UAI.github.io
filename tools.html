@@ -1,0 +1,197 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <title>Deoxyz - Tools Shop</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      color: #ff3333;
+      font-family: 'Courier New', Courier, monospace;
+      text-shadow: 0 0 4px #ff3333;
+    }
+
+    #universe {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(ellipse at bottom, #100000 0%, #000 100%);
+    }
+
+    .top-header {
+      background-color: #000;
+      padding: 30px 0;
+      text-align: center;
+      border-bottom: 2px solid #ff3333;
+      box-shadow: 0 0 10px #ff3333aa;
+    }
+
+    .top-header h1 {
+      font-size: 38px;
+      color: #ff3333;
+      letter-spacing: 2px;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 40px;
+    }
+
+    .tool-card {
+      background-color: #000;
+      border: 2px solid #ff3333;
+      padding: 20px;
+      margin: 20px;
+      width: 300px;
+      text-align: center;
+      transition: 0.3s;
+      box-shadow: 0 0 10px #ff3333aa;
+    }
+
+    .tool-card:hover {
+      background-color: #220000;
+      color: #ffcccc;
+      border-color: #ffcccc;
+    }
+
+    .tool-card img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+      filter: brightness(1.1) contrast(1.2);
+    }
+
+    .tool-card h3 {
+      margin-top: 10px;
+      font-size: 18px;
+    }
+
+    .tool-card p {
+      font-size: 14px;
+      color: #ffaaaa;
+    }
+
+    .tool-card a {
+      color: #ff3333;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 10px;
+      padding: 6px 12px;
+      border: 1px solid #ff3333;
+    }
+
+    .tool-card a:hover {
+      background-color: #ff3333;
+      color: #000;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px 0;
+      color: #ff3333;
+      font-size: 13px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-header">
+    <h1>DEOXYZ TOOLS</h1>
+  </div>
+
+  <div class="container">
+    <div class="tool-card">
+      <img src="https://github.com/UNKNOWHATIDENTIFIED/unknowhatidentified.github.io/blob/main/f529c672-c2df-4314-a9d7-ea3c1f6fe264.png?raw=true" alt="Tool 1">
+      <h3>HTTP Sniffer + ARP </h3>
+      <p>Ngửi lưu lượng HTTP và phát hiện thông tin đăng nhập không được mã hóa trong mạng của bạn và arp spoof sẽ làm mạng của bạn bị gián đoạn (đã thử trên iphone)
+</p>
+      <p>
+        pass:UHI
+      </p>
+      <a href="https://www.mediafire.com/file/x0s2t151i80h1ry/sniff.rar/file">🔗 Download</a>
+    </div>
+
+    <div class="tool-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/906/906175.png" alt="Tool 2">
+      <h3>Bettercap Auto</h3>
+      <p>Launch Bettercap with pre-configured MITM modules and logging system.</p>
+      <a href="#">🔗 Learn More</a>
+    </div>
+
+    <div class="tool-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/2550/2550266.png" alt="Tool 3">
+      <h3>Payload Injector</h3>
+      <p>Inject JS/CSS into target browsers during active HTTP MITM attack.</p>
+      <a href="#">🔗 GitHub</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    © 2025 Deoxyz - All tools provided as-is for educational purposes only.
+  </div>
+
+  <canvas id="universe" width="982" height="730"></canvas>
+  <script>
+    const canvas = document.getElementById('universe');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let stars = Array.from({length: 300}, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      radius: Math.random() * 1.5 + 0.5,
+      alpha: Math.random(),
+      flicker: Math.random() * 0.02
+    }));
+
+    let auroraLayers = Array.from({length: 3}, (_, i) => ({
+      alpha: 0.06 + i * 0.02,
+      color: i % 2 === 0 ? 'rgba(255,0,64,' : 'rgba(255,80,80,'
+    }));
+
+    function drawStars() {
+      for (let s of stars) {
+        s.alpha += s.flicker;
+        if (s.alpha <= 0 || s.alpha >= 1) s.flicker *= -1;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${s.alpha})`;
+        ctx.fill();
+      }
+    }
+
+    function drawAurora() {
+      for (let a of auroraLayers) {
+        let grad = ctx.createRadialGradient(canvas.width/2, canvas.height, 0, canvas.width/2, canvas.height, 800);
+        grad.addColorStop(0, `${a.color}${a.alpha})`);
+        grad.addColorStop(1, 'transparent');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawAurora();
+      drawStars();
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+
+
+</body></html>
